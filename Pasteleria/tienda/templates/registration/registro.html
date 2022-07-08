@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<!-- Bueno -->
+
+<html>
+<head>
+  {%load static%}
+  <title>Pastelería Dulce Palacio</title>
+  <link href="{% static 'img/icon-pasteleria.png'%}" rel="shortcut icon" >
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/business-frontpage.css'%}" rel="stylesheet">
+
+  <!--Link hacia los iconos-->
+  <link href="https://use.fontawesome.com/5e22f11e35.css" media="all" rel="stylesheet">
+
+</head>
+
+<body>
+<!-- Navegación -->
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"aria-controls="navbarResponsive" 
+            aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon-png">
+        <img class="navbar-toggler-icon-png" src="{% static 'img/icon-pasteleria.png'%}" style="width: 70px; height: 55.47px;">
+      </span>
+      <h1 class="navbar-toggler-icon-text"> Pastelería Dulce Palacio</h1>
+    </button>
+
+<!---Icono de logo-->
+    <a class="navbar-brand" href="{% url 'home' %}">
+      <img src="{% static 'img/icon-pasteleria.png' %}" style="width:70px">
+      <h1 class="text-navbar"> Pastelería Dulce Palacio</h1>
+    </a>
+
+
+<!---Opciones de navegación e iconos por sección-->    
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link text-white" href="{% url 'tienda' %}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" class="bi bi-shop" viewBox="0 0 16 16">
+              <path d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z"/>
+            </svg>
+            Tienda
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'carrito' %}" class="nav-link text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" class="bi bi-bag" viewBox="0 0 16 16">
+              <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
+            </svg>
+            Carrito
+          </a>
+        </li>
+        {% else %}
+        {% endif %}
+        <!-- Div de acceso-->
+        <div class="ini-se">
+          <li class="nav-item" class="nav-link text-white">
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <!-- Top Navigation Menu -->
+              <div class="topnav">
+                <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+                <a class="nav-link text-white" href="javascript:void(0);" onclick="myFunction()">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" class="bi bi-person-circle" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                  </svg>
+                  @{{ user.username }}
+                </a>
+                <div id="myLinks">
+                  <a href="{% url 'logout' %}" class="nav-link text-white navbar-a icon" >Cerrar Sesión</a>
+                </div>
+              </div>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <div class="topnav">
+                <a class="nav-link text-white" href="javascript:void(0);" onclick="myFunction()">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="bi bi-people" viewBox="0 0 16 16">
+                    <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+                  </svg>
+                  Ingresar
+                </a>
+                <div id="myLinks" >
+                  <a href="{% url 'login' %}" class="nav-link text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" class="bi bi-person" viewBox="0 0 16 16">
+                      <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                    </svg>
+                    Iniciar Sesión
+                  </a>
+                  <a href="{% url 'registro' %}" class="nav-link text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" class="bi bi-person-plus" viewBox="0 0 16 16">
+                      <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                      <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+                    </svg>
+                    Registrarse
+                  </a>
+                </div>
+              </div>
+            </li>
+            {% endif %}
+          </li>  
+        </div>
+      </ul>
+      
+    </div>
+  </div>
+</nav>
+<!-- Header -->
+<body>
+  <div class="container container-login">
+    <div class="row">
+        <div class="col-12 align-self-center text-center">
+            <h1 class="display-1" style="color: #41221e ; font-weight: bolder;  font-family: 'Segoe Script';">Registro de usuarios</h1>
+        </div>
+    </div>
+
+    <div class="sufee-logind-flex align-content-center flex-wrap">
+        <div class="container">
+             <div class="con-con">
+                 <!--<div class="login-logo">
+                          <img class="align-content" src="{% static 'img/iniciar-sesion.jpg' %}" width="600px" height="300px">
+                 </div>-->
+                 <div class="form-login">
+                        <form method="POST">
+                            {% csrf_token %}
+                                <div class="form-group card-text text-center">
+                                   <label>Nombre de usuario</label>
+                                   <input type="text" class="form-control" placeholder="Ingrese su nombre de usuario" name="username">
+                                </div>
+                                <div class="form-group card-text text-center">
+                                  <label>Ingrese su nombre</label>
+                                  <input type="first_name" class="form-control" placeholder="Ingrese su nombre" name="first_name">
+                                </div>
+                                <div class="form-group card-text text-center">
+                                  <label>Ingrese su apellido</label>
+                                  <input type="last_name" class="form-control" placeholder="Ingrese su apellido" name="last_name">
+                                </div>
+                                <div class="form-group card-text text-center">
+                                  <label>Ingrese su correo</label>
+                                  <input type="email" class="form-control" placeholder="Ingrese su correo" name="email">
+                                </div>
+                                <div class="form-group card-text text-center">
+                                    <label>Contraseña</label>
+                                    <input type="password" class="form-control" placeholder="Ingrese una contraseña" name="password1">
+                                </div>
+                                <div class="form-group card-text text-center">
+                                    <label>Confirmación de contraseña</label>
+                                    <input type="password" class="form-control" placeholder="Ingrese de nuevo su contraseña" name="password2">
+                                </div>
+                                <a href="{% url 'home' %}" class="float-left btn btn-pink">Ir a la página principal</a>
+                                <a href="{% url 'login' %}" class="float-left btn btn-pink">Iniciar Sesión</a>
+                                <button type="submit" class="btn btn-primary btn-flatm-b-30m-t-30 float-right" style="margin: 0%;">Registrarse</button>
+                        </form>
+                </div>
+             </div>
+        </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="py-5">
+    <div class="container">
+      <p class="m-0 text-center text-white">Isidora Urrutia y Pablo Ortiz</p>
+      <p class="m-0 text-center text-white"> @Copyrigth Derechos reservados 2022. </p>
+    </div>
+    <div class="container" style="text-align: center;">
+      <h3 class="footer__title" >Síguenos</h3>
+      <div class="footer__social-networks">
+      <a class="a-social-networks" href="#">
+          <i class="fa fa-facebook" aria-hidden="true"></i>
+      </a>		
+      <a class="a-social-networks" href="#">
+          <i class="fa fa-twitter" aria-hidden="true"></i>
+      </a>
+      <a class="a-social-networks" href="#">
+          <i class="fa fa-instagram" aria-hidden="true"></i>
+      </a>
+      <a class="a-social-networks" href="#">
+          <i class="fa fa-youtube-play" aria-hidden="true"></i>
+      </a>
+      </div>
+  </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'js/jquery.galeria.js' %}"></script>
+  <script src="{% static 'js/hamburguer.button.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="{%static 'js/main.js' %}"></script>
+</body>
+</html>
